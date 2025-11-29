@@ -1,9 +1,11 @@
 import AppPagination from "@/components/app-pagination";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Table } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PreferenceHorizontalIcon } from "@/constants/icons";
 import { ChevronLeftIcon } from "lucide-react";
+import { ChannelContentList } from "./components/channel-content-list";
 
 const TABS = [
   {
@@ -44,12 +46,12 @@ function ChannelContentPage() {
       </div>
 
       <Tabs defaultValue="videos">
-        <TabsList className="bg-transparent px-4 gap-x-2 sm:gap-x-5">
+        <TabsList className="bg-transparent sm:px-4 gap-x-2 sm:gap-x-5">
           {TABS.map((tab) => (
             <TabsTrigger
               key={tab.id}
               value={tab.value}
-              className="rounded-none bg-transparent! border-none relative after:content-[''] after:w-full after:h-0.5 after:rounded-full after:bg-primary after:absolute after:bottom-0 after:left-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 after:ease-in-out data-[state=active]:after:scale-x-100"
+              className="rounded-none bg-transparent! border-none relative after:content-[''] after:w-full after:h-0.5 after:rounded-full after:bg-primary after:absolute after:bottom-0 after:left-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 after:ease-in-out data-[state=active]:after:scale-x-100 text-xs sm:text-base"
             >
               {tab.label}
             </TabsTrigger>
@@ -66,12 +68,8 @@ function ChannelContentPage() {
         </div>
 
         {TABS.map((tab) => (
-          <TabsContent
-            key={tab.id}
-            value={tab.value.toLowerCase()}
-            className="sm:min-h-[calc(100vh-385px)] sm:overflow-hidden sm:overflow-y-auto"
-          >
-            Content
+          <TabsContent key={tab.id} value={tab.value.toLowerCase()}>
+            <ChannelContentList />
           </TabsContent>
         ))}
 
