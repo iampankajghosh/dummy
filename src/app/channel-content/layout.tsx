@@ -1,7 +1,8 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { cookies } from "next/headers";
 import { AppSidebar } from "@/components/app-sidebar";
 import AppHeader from "@/components/app-header";
-import { cookies } from "next/headers";
+import AppFooter from "@/components/app-footer";
 
 export default async function Layout({
   children,
@@ -15,6 +16,7 @@ export default async function Layout({
       <main className="w-full">
         <AppHeader />
         <section>{children}</section>
+        <AppFooter />
       </main>
     </SidebarProvider>
   );
